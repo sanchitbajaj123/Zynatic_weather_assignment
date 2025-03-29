@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { getData, getCity } from "./api";
 
+
 function App() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -29,6 +30,7 @@ function App() {
   }
 
   useEffect(() => {
+  
     const fetchData = async (city) => {
       setLoading(true);
       const d = await getData(city);
