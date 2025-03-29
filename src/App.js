@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { useState, useEffect } from 'react';
+import { getData } from './api';
 
 function App() {
+  const [data, setData] = useState("");
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchData = async () => {
+      const d = await getData('London');
+      console.log(d);
+      setData(d);
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : data ? (
+        <div>
+          <h2>{data.name}</h2>
+          <p>Temperature: {data.main.temp}°C</p>
+          <p>Weather: {data.weather[0].description}</p>
+          <p>Humidity: {data.main.humidity}%</p>
+          <p>Wind Speed: {data.wind.speed} km/h</p>
+        </div>
+      ) : (
+        <p>Error loading weather data.</p>
+      )}
     </div>
   );
 }
