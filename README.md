@@ -49,7 +49,7 @@ A React-based weather application that fetches and displays real-time weather in
 - **Retrieves saved searches** when the app is reopened.  
 
 #### Example usage:  
-```javascript
+javascript
 localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
 
 const savedSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
