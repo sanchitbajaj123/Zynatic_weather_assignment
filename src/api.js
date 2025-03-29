@@ -6,3 +6,8 @@ export async function  getData(city){
     console.log(data)
     return data.data;
 }
+export async function getCity(){
+    const response = await axios.get("http://ip-api.com/json/");
+    console.log("City:", response.data.city);
+    return response.data.city;
+}
