@@ -7,7 +7,7 @@ export async function  getData(city){
     return data.data;
 }
 export async function getCity(){
-    const response = await axios.get("http://ip-api.com/json/");
+    const response = await axios.get("https://ipwho.is/");
     console.log("City:", response.data.city);
     return response.data.city;
 }
